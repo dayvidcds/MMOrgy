@@ -1,0 +1,23 @@
+5
+
+Jatauba
+20000
+2 2 3
+
+Brejo da Madre de Deus
+40000
+2 1 5
+
+Santa Cruz do Capibaribe
+120000
+2 1 4
+
+Toritama
+60000
+3 2 3 5
+
+Caruaru
+300000
+2 2 4
+
+B Santa Cruz do Capibaribe
