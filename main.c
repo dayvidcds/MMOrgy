@@ -1,2 +1,0 @@
-//Parabéns ManoTai 
-//Bibi gay
