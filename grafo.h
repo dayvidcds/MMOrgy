@@ -5,10 +5,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-enum Sexo{
+/*enum Sexo{
 	MASC = 1,
 	FEM = 2
-};
+};*/
 
 struct Amigos{
 	int indice;
@@ -24,6 +24,7 @@ struct Perfil{
 	char nome[128];
 	char cidade[64];
 	char sexo[64];
+	//enum Sexo {MASC = 1, FEM = 2} sexo;
 	int idade;
 	struct Amigos *amigos;
 	struct Interesses *interesses;
