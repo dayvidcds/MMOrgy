@@ -2,41 +2,50 @@
 
 //Função para montar grafo a partir de informações dadas num arquivo .txt
 struct No *montar_grafo (FILE *entrada){
+
 	struct No *no_inicio = NULL, *no_fim = NULL, *no_novo = NULL;
-	int quant_cidades = 0, i;
+	int quant_cadastros = 0, i;
 	
-	fscanf(entrada, "%d\n", &quant_cidades);
+	fscanf(entrada, "%d\n", &quant_cadastros);
 	
-	
-	for(i=0; i<quant_cidades; i++){
-		struct Aresta *aresta_inicio = NULL, *aresta_fim = NULL, *aresta_novo = NULL;
-		int quant_vizinhos = 0, j;
-		no_novo = (struct No*)malloc(sizeof(struct No));
+	for(i=0; i<quant_cadastros; i++){
+
+		struct Amigos *amigos_inicio = NULL, *amigos_fim = NULL, *amigo_novo = NULL;
+
+		int quant_amigos = 0, j;
+		no_novo = (struct No *)malloc(sizeof(struct No));
 		
 		fscanf(entrada, "\n");
-		fgets(no_novo->cidade.nome, 64, entrada);
-		strtok(no_novo->cidade.nome, "\n");
-		fscanf(entrada, "\n%d", &no_novo->cidade.habitantes);
+		fgets(no_novo->perfil.nome, 128, entrada);
+		strtok(no_novo->perfil.nome, "\n");
+		fgets(no_novo->perfil.cidade, 64, entrada);
+		strtok(no_novo->perfil.cidade, "\n");
+		fgets(no_novo->perfil.sexo, 64, entrada);
+		strtok(no_novo->perfil.sexo, "\n");
+		fscanf(entrada, "\n%d", &no_novo->perfil.idade);
+		//fscanf(entrada, "\n%d", &no_novo->cidade.habitantes);
 		
-		fscanf(entrada, "\n%d", &quant_vizinhos);
+		fscanf(entrada, "\n%d", &quant_amigos);
 		
 		
-		for(j=0; j<quant_vizinhos; j++){
-			aresta_novo = (struct Aresta*)malloc(sizeof(struct Aresta));
-			fscanf(entrada, " %d", &aresta_novo->indice);
-			
+		for(j=0; j<quant_amigos; j++){
+
+			amigo_novo = (struct Amigos *)malloc(sizeof(struct Amigos));
+
+			fscanf(entrada, " %d", &amigo_novo->indice);
+
 			//Aqui ele insere aresta
-			if (aresta_fim==NULL){
-				aresta_inicio = aresta_fim = aresta_novo;
+			if (amigos_fim==NULL){
+				amigos_inicio = amigos_fim = amigo_novo;
 			}else{
-				aresta_fim->aresta_prox = aresta_novo;
-				aresta_novo->aresta_prox = NULL;
-				aresta_fim = aresta_novo;
+				amigos_fim->prox_amigo = amigo_novo;
+				amigo_novo->prox_amigo = NULL;
+				amigos_fim = amigo_novo;
 			}
 			
 		}
 		
-		no_novo->cidade.aresta = aresta_inicio;
+		no_novo->perfil.amigos = amigos_inicio;
 		
 		//Aqui ele insere nó
 		if (no_fim==NULL){
@@ -48,7 +57,6 @@ struct No *montar_grafo (FILE *entrada){
 		}
 		
 	}
-	
 	
 	return no_inicio;
 }

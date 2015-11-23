@@ -5,20 +5,33 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Aresta{
-	int indice;
-	struct Aresta *aresta_prox;
+enum Sexo{
+	MASC = 1,
+	FEM = 2
 };
 
-struct Cidade{
+struct Amigos{
+	int indice;
+	struct Amigos *prox_amigo;
+};
+
+struct Interesses{
 	char nome[64];
-	int habitantes;
-	struct Aresta *aresta;
+	struct Interesses *prox_interesse;
+};
+
+struct Perfil{
+	char nome[128];
+	char cidade[64];
+	char sexo[64];
+	int idade;
+	struct Amigos *amigos;
+	struct Interesses *interesses;
 };
 
 struct No{
 	int visitado;
-	struct Cidade cidade;
+	struct Perfil perfil;
 	struct No *no_prox;
 };
 

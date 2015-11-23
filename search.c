@@ -42,7 +42,7 @@ void enqueue (struct NoQueue **fila_fim, struct NoQueue *fila_novo){
 }
 
 //Função de busca em grafo por largura
-struct No *buscaLargura (struct No *grafo, int index_Inicio, const char *nomeCidade, int *numCidades){
+struct No *buscaLargura (struct No *grafo, int index_Inicio, const char *nomePessoa, int *numCidades){
 	struct NoQueue *fila_inicio = (struct NoQueue*)malloc(sizeof(struct NoQueue));
 	struct NoQueue *fila_fim = (struct NoQueue*)malloc(sizeof(struct NoQueue));
 	struct NoQueue *fila_novo = (struct NoQueue*)malloc(sizeof(struct NoQueue)); 
@@ -50,24 +50,25 @@ struct No *buscaLargura (struct No *grafo, int index_Inicio, const char *nomeCid
 	reset_visitas(&grafo);
 	
 	fila_novo->no = list_get(&grafo, index_Inicio);
-	enqueue(&fila_fim,  fila_novo);
+	enqueue(&fila_fim, fila_novo);
 	fila_inicio = fila_fim;
 	
-	if (strcmp(fila_inicio->no->cidade.nome, nomeCidade)==0){
+	if (strcmp(fila_inicio->no->perfil.nome, nomePessoa)==0){
 		//return fila_inicio->no->cidade;
 		return fila_inicio->no;
 	}
 	
+
 	while(verif_visitas(&grafo)==1){
 		struct NoQueue *fila_temp = (struct NoQueue*)malloc(sizeof(struct NoQueue));
 		(*numCidades)++;
 	
 		//Insere nós correspondentes as arestas e remove os nós já verificados da lista de prioridades
 		for(fila_temp = fila_fim; fila_inicio!=fila_temp->fila_prox; fila_inicio = fila_inicio->fila_prox){
-			struct Aresta *temp_aresta = NULL;
+			struct Amigos *temp_amigos = NULL;
 		
-			for(temp_aresta = fila_inicio->no->cidade.aresta; temp_aresta!=NULL; temp_aresta = temp_aresta->aresta_prox){
-				struct No *temp = list_get(&grafo, temp_aresta->indice);
+			for(temp_amigos = fila_inicio->no->perfil.amigos; temp_amigos != NULL; temp_amigos = temp_amigos->prox_amigo){
+				struct No *temp = list_get(&grafo, temp_amigos->indice);
 				fila_novo = (struct NoQueue*)malloc(sizeof(struct NoQueue));
 				
 				if(temp->visitado==0){
@@ -78,11 +79,11 @@ struct No *buscaLargura (struct No *grafo, int index_Inicio, const char *nomeCid
 			}
 		
 		}
-		
+
 		//Testar se na lista está presente o nó procurado
 		for(fila_temp = fila_inicio; fila_temp!=NULL; fila_temp = fila_temp->fila_prox){
 		
-			if(strcmp(fila_temp->no->cidade.nome, nomeCidade)==0){
+			if(strcmp(fila_temp->no->perfil.nome, nomePessoa)==0){
 				//return fila_temp->no->cidade;
 				return fila_temp->no;
 			}
