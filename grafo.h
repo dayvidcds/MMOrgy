@@ -35,11 +35,6 @@ struct No{
 	struct No *no_prox;
 };
 
-struct NoQueue{
-	struct No *no;
-	struct NoQueue *fila_prox;
-};
-
 struct No *montar_grafo (FILE *entrada);
 
 #endif

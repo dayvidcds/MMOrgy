@@ -1,4 +1,5 @@
 #include "grafo.h"
+#include "search.h"
 
 //Reseta todas as visitas
 void reset_visitas (struct No **head){

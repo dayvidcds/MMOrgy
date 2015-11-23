@@ -1,6 +1,11 @@
 #ifndef __SEARCH_H__
 #define __SEARCH_H__
 
+struct NoQueue{
+	struct No *no;
+	struct NoQueue *fila_prox;
+};
+
 int verif_visitas (struct No **head);
 void reset_visitas (struct No **head);
 struct No *list_get (struct No **head, int indice);
