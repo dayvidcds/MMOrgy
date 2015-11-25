@@ -5,34 +5,34 @@ Caruaru
 MASC
 20
 2 Web Python
-2 3 5
+3 2 3
 
 Matheus
 Caruaru
 FEM
 17
 1 Alex
-2 1 3
+2 1 5
 
 Silvano
 Jatauba
 MASC
 18
 2 Uva Filosofia
-3 1 2 4
+3 1 4 5 
 
 Lucas Feijó
 Caruaru
 MASC
 20
 2 Rihanna League
-3 2 1 3
+2 3 5
 
 Dayvid Arduino
 Cha Pequeno
 MASC
 18
 1 Embarcados
-3 1 2 4
+3 2 3 5
 
 B Lucas Feijó

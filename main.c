@@ -1,9 +1,11 @@
 #include "grafo.h"
 #include "search.h"
+#include "cluster.h"
 
 int main (int argc, char **argv){
 
 	struct No *head = (struct No*)malloc(sizeof(struct No)), *procurado = NULL;
+	struct Cidade *head_cidade = (struct Cidade*)malloc(sizeof(struct Cidade));
 	char nome_pessoa[64], ler_char = 0;
 	int n_pessoas = 0;
 	FILE *entrada = NULL;
@@ -26,12 +28,20 @@ int main (int argc, char **argv){
 		procurado = buscaLargura(head, 1, nome_pessoa, &n_pessoas);
 	}
 	
+	
 	fclose(entrada);
 		
 	if(procurado){
 		printf("Encontrada! A busca passou por %d pessoas para encontrá-la.\n", n_pessoas);
 	}else{
 		printf("Pessoa não encontrada\n");
+	}
+	
+	head_cidade = mapear_grafo(head, 1);
+	
+	while(head_cidade){
+		printf("%s\n", head_cidade->nome);
+		head_cidade = head_cidade->prox;
 	}
 	
 	free(head); free(procurado);
