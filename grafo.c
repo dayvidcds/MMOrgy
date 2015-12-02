@@ -1,14 +1,14 @@
 #include "grafo.h"
 
 //Função para montar grafo a partir de informações dadas num arquivo .txt
-struct No *montar_grafo (FILE *entrada){
+struct No *montar_grafo (FILE *entrada, int *qtdade_cadastros){
 
 	struct No *no_inicio = NULL, *no_fim = NULL, *no_novo = NULL;
-	int quant_cadastros = 0, i;
+	int i = 0;
 	
-	fscanf(entrada, "%d\n", &quant_cadastros);
+	fscanf(entrada, "%d\n", qtdade_cadastros);
 	
-	for(i=0; i<quant_cadastros; i++){
+	for(i=0; i<(*qtdade_cadastros); i++){
 
 		struct Amigos *amigos_inicio = NULL, *amigos_fim = NULL, *amigo_novo = NULL;
 		struct Interesses *interesses_inicio = NULL, *interesses_fim = NULL, *novo_interesse = NULL;

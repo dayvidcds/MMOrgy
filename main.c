@@ -5,9 +5,9 @@
 int main (int argc, char **argv){
 
 	struct No *head = (struct No*)malloc(sizeof(struct No)), *procurado = NULL;
-	struct Cidade *head_cidade = (struct Cidade*)malloc(sizeof(struct Cidade));
-	char nome_pessoa[64], ler_char = 0;
-	int n_pessoas = 0;
+	struct Cidade *head_cidade = (struct Cidade*)malloc(sizeof(struct Cidade)), *head_cidade2 = (struct Cidade*)malloc(sizeof(struct Cidade));
+    char nome_pessoa[64], ler_char = 0;
+	int n_pessoas = 0, quantidade_cadastros = 0;
 	FILE *entrada = NULL;
 	
 	if(!argv[1]){
@@ -17,7 +17,7 @@ int main (int argc, char **argv){
 	
 	entrada = fopen(argv[1], "r");
 	
-	head = montar_grafo(entrada);
+	head = montar_grafo(entrada, &quantidade_cadastros);
 
 	fscanf(entrada, "\n%c ", &ler_char);
 	
@@ -39,11 +39,15 @@ int main (int argc, char **argv){
 	
 	head_cidade = mapear_grafo(head, 1);
 	
-	while(head_cidade){
-		printf("%s\n", head_cidade->nome);
-		head_cidade = head_cidade->prox;
+	head_cidade2 = head_cidade;
+	
+	while(head_cidade2){
+		printf("%s\n", head_cidade2->nome);
+		head_cidade2 = head_cidade2->prox;
 	}
 	
+    insere_pessoas(&head, &head_cidade, &quantidade_cadastros);
+    
 	free(head); free(procurado);
 	
 	return 0;

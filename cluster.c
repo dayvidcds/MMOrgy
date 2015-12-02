@@ -75,3 +75,41 @@ struct Cidade *mapear_grafo (struct No *grafo, int index_Inicio){
 	return head_cidade;
 
 }
+
+void insere_pessoas(struct No **head_perfis, struct Cidade **head_cidades, int *quantidade_perfis){
+	int i = 0;
+	struct Cidade *headCluster = (struct Cidade *) malloc(sizeof(struct Cidade));
+	struct Cidade *primeiro = (*head_cidades);
+	struct No *firstNo = (*head_perfis);
+	struct Perfil *ultimoPerfilClusterInserido = NULL;
+	struct Cidade *blabla = (struct Cidade *) malloc(sizeof(struct Cidade));
+	
+	headCluster = (*head_cidades);
+       
+    while(primeiro){
+		
+		for(i = 0; i < (*quantidade_perfis); ++i){
+			if(strcmp(firstNo->perfil.cidade, primeiro->nome) != 0){
+				firstNo = firstNo->no_prox;
+			} else {
+				if(primeiro->perfil == NULL){
+					primeiro->perfil = &firstNo->perfil;
+					ultimoPerfilClusterInserido = primeiro->perfil;	
+				} else {
+					ultimoPerfilClusterInserido->prox_perfilCidade = &firstNo->perfil;
+					ultimoPerfilClusterInserido = &firstNo->perfil; 
+				}
+				firstNo = firstNo->no_prox;
+			}
+        }
+        firstNo = (*head_perfis);
+        primeiro = primeiro->prox;       
+    }
+    
+    blabla = (*head_cidades);
+   
+    printf("\n%s", blabla->nome);
+    printf(" %s\n", blabla->perfil->nome);
+    printf(" %s\n", blabla->perfil->prox_perfilCidade->nome);
+    printf(" %s\n", blabla->perfil->prox_perfilCidade->prox_perfilCidade->nome);
+}
