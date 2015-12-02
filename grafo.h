@@ -29,6 +29,8 @@ struct Perfil{
 	char sexo[64];
 	//enum Sexo {MASC = 1, FEM = 2} sexo;
 	int idade;
+    //int marcado;
+    struct Perfil *prox_perfilCidade;
 	struct Amigos *amigos;
 	struct Interesses *interesses;
 };
@@ -41,6 +43,6 @@ struct No{
 };
 
 /* função que monta o grafo, dado um arquivo de entrada */
-struct No *montar_grafo (FILE *entrada);
+struct No *montar_grafo (FILE *entrada, int *qtdade_cadastros);
 
 #endif
