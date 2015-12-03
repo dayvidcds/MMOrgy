@@ -82,7 +82,6 @@ void insere_pessoas(struct No **head_perfis, struct Cidade **head_cidades, int *
 	struct Cidade *primeiro = (*head_cidades);
 	struct No *firstNo = (*head_perfis);
 	struct Perfil *ultimoPerfilClusterInserido = NULL;
-	struct Cidade *blabla = (struct Cidade *) malloc(sizeof(struct Cidade));
 	
 	headCluster = (*head_cidades);
        
@@ -105,13 +104,6 @@ void insere_pessoas(struct No **head_perfis, struct Cidade **head_cidades, int *
         firstNo = (*head_perfis);
         primeiro = primeiro->prox;       
     }
-    
-    blabla = (*head_cidades);
-   
-    printf("\n%s", blabla->nome);
-    printf(" %s\n", blabla->perfil->nome);
-    printf(" %s\n", blabla->perfil->prox_perfilCidade->nome);
-    printf(" %s\n", blabla->perfil->prox_perfilCidade->prox_perfilCidade->nome);
 }
 
 void encadeia_interesses (struct Cluster_interesses ** head_interesses, struct Cluster_interesses ** fim, struct Cluster_interesses * novo){

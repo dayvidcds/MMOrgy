@@ -8,8 +8,7 @@ struct Cidade{
 };
 
 struct Cluster_interesses {
-     
-    char interesse [32];
+    char interesse[32];
     struct Perfil * perfil;
     struct Cluster_interesses * prox;
 };

@@ -4,11 +4,15 @@
 
 int main (int argc, char **argv){
 
-	struct Cluster_interesses * head_interesses = (struct Cluster_interesses *) malloc (sizeof (struct Cluster_interesses));
+	
 	struct No *head = (struct No*)malloc(sizeof(struct No)), *procurado = NULL;
-	struct Cidade *head_cidade = (struct Cidade*)malloc(sizeof(struct Cidade)), *head_cidade2 = (struct Cidade*)malloc(sizeof(struct Cidade));
+	struct Cidade *head_cidade = (struct Cidade*)malloc(sizeof(struct Cidade)), *head_cidade_temp = (struct Cidade*)malloc(sizeof(struct Cidade));
+    struct Cluster_interesses *head_interesses = (struct Cluster_interesses *)malloc(sizeof (struct Cluster_interesses)), *head_interesses_temp = (struct Cluster_interesses *)malloc(sizeof (struct Cluster_interesses));
+    struct Perfil *perfil_temp = (struct Perfil*)malloc(sizeof (struct Perfil));
+    
     char nome_pessoa[64], ler_char = 0;
 	int n_pessoas = 0, quantidade_cadastros = 0;
+	
 	FILE *entrada = NULL;
 	
 	if(!argv[1]){
@@ -33,28 +37,46 @@ int main (int argc, char **argv){
 	fclose(entrada);
 		
 	if(procurado){
-		printf("Encontrada! A busca passou por %d pessoas para encontrá-la.\n", n_pessoas);
+		printf("Encontrada! A busca passou por %d pessoas para encontrá-la.\n\n", n_pessoas);
 	}else{
 		printf("Pessoa não encontrada\n");
 	}
 	
 	head_cidade = mapear_grafo(head, 1);
-	
-	head_cidade2 = head_cidade;
-	
 	head_interesses = mapear_interesses (head, 1);
-
-	while(head_cidade2){
-		printf("%s\n", head_cidade2->nome);
-		head_cidade2 = head_cidade2->prox;
+	insere_pessoas(&head, &head_cidade, &quantidade_cadastros);
+	
+	head_cidade_temp = head_cidade;
+	
+	while(head_cidade_temp){
+		perfil_temp = head_cidade_temp->perfil;
+		printf("%s: ", head_cidade_temp->nome);
+		
+		while(perfil_temp){
+			printf("%s / ", perfil_temp->nome);
+			perfil_temp = perfil_temp->prox_perfilCidade;
+		}
+		
+		head_cidade_temp = head_cidade_temp->prox;
+		printf("\n");
 	}
 	
-	while (head_interesses){
-		printf ("%s\n", head_interesses->interesse);
-		head_interesses = head_interesses->prox;
+	printf("\nInteresses:\n");
+	
+	head_interesses_temp = head_interesses;
+	while(head_interesses_temp){
+		//perfil_temp = head_interesses_temp->perfil;
+		printf("%s\n", head_interesses_temp->interesse);
+		
+		/*while(perfil_temp){
+			printf("%s / ", perfil_temp->nome);
+			
+		}*/
+		
+		head_interesses_temp = head_interesses_temp->prox;
 	}
 	
-    insere_pessoas(&head, &head_cidade, &quantidade_cadastros);
+    
     
 	free(head); free(procurado);
 	
