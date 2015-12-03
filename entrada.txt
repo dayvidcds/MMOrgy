@@ -4,21 +4,21 @@ João Neto
 Caruaru
 MASC
 20
-2 Web Python
-3 2 3
+3 Web Python League
+2 2 3
 
 Matheus
 Caruaru
 FEM
 17
-1 Alex
+2 basquete drogas
 2 1 5
 
 Silvano
 Jatauba
 MASC
 18
-2 Uva Filosofia
+3 Uva Filosofia drogas
 3 1 4 5 
 
 Lucas Feijó
@@ -32,7 +32,7 @@ Dayvid Arduino
 Cha Pequeno
 MASC
 18
-1 Embarcados
-3 2 3 5
+2 Embarcados League
+3 2 3 4 
 
 B Lucas Feijó
