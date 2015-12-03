@@ -27,7 +27,8 @@ struct Cidade *mapear_grafo (struct No *grafo, int index_Inicio){
 	fila_inicio = fila_fim;
 	
 	strcpy(head_cidade->nome, grafo->perfil.cidade);
-	
+	head_cidade->perfil = NULL;
+    head_cidade->prox = NULL;
 	
 	while(verif_visitas(&grafo)==1){
 		struct NoQueue *fila_temp = (struct NoQueue*)malloc(sizeof(struct NoQueue));
@@ -65,6 +66,7 @@ struct Cidade *mapear_grafo (struct No *grafo, int index_Inicio){
 			if (!verif){
 				struct Cidade *novo = (struct Cidade*)malloc(sizeof(struct Cidade));
 				strcpy(novo->nome, fila_temp->no->perfil.cidade);
+                novo->perfil = NULL;
 				encadeia_cidades(&cidade_fim, novo);
 			}
 			
@@ -76,7 +78,7 @@ struct Cidade *mapear_grafo (struct No *grafo, int index_Inicio){
 
 }
 
-void insere_pessoas(struct No **head_perfis, struct Cidade **head_cidades, int *quantidade_perfis){
+void insere_pessoasCidade(struct No **head_perfis, struct Cidade **head_cidades, int *quantidade_perfis){
 	int i = 0;
 	struct Cidade *headCluster = (struct Cidade *) malloc(sizeof(struct Cidade));
 	struct Cidade *primeiro = (*head_cidades);
@@ -98,10 +100,57 @@ void insere_pessoas(struct No **head_perfis, struct Cidade **head_cidades, int *
 					ultimoPerfilClusterInserido->prox_perfilCidade = &firstNo->perfil;
 					ultimoPerfilClusterInserido = &firstNo->perfil; 
 				}
+                ultimoPerfilClusterInserido->prox_perfilCidade = NULL;
 				firstNo = firstNo->no_prox;
 			}
         }
         firstNo = (*head_perfis);
+        primeiro = primeiro->prox;       
+    }
+}
+
+void insere_pessoasInteresses(struct No **head_perfis, struct Cluster_interesses **head_interesses){
+    int i = 0;
+	//struct Cluster_interesses *headCluster = (struct Cluster_interesses *) malloc(sizeof(struct Cluster_Interesses));
+	struct Cluster_interesses *primeiro = (*head_interesses);
+	struct No *firstNo = (*head_perfis);
+    struct Interesses *temp, *aux;
+    struct lista_perfisInteresses *ultimoLista, *primeiroLista;
+    
+	while(primeiro){
+        while(firstNo){
+            temp = firstNo->perfil.interesses;    
+            while(temp){
+     
+                    struct lista_perfisInteresses *nova = (struct lista_perfisInteresses *) malloc(sizeof(struct lista_perfisInteresses));
+                    
+                    if(strcmp(temp->nome, primeiro->interesse) != 0){ 
+                        temp = temp->prox_interesse;
+                 
+                    } else {
+                        if(!primeiroLista){
+                            nova->proxi = NULL;
+                            nova->perfil = &firstNo->perfil;
+                            primeiroLista = nova;
+                            ultimoLista = primeiroLista;
+                            break;
+                        } else {
+                            nova->proxi = NULL;
+                            nova->perfil = &firstNo->perfil;
+                            ultimoLista->proxi = nova;
+                            ultimoLista = nova; 
+                            break;
+                        }
+                       // temp = temp->prox_interesse;
+                    }
+            }    
+            firstNo = firstNo->no_prox;
+        }
+         
+        firstNo = (*head_perfis);
+        primeiro->lista = primeiroLista;
+        primeiroLista = NULL;
+        ultimoLista = NULL;
         primeiro = primeiro->prox;       
     }
 }

@@ -9,7 +9,7 @@ int main (int argc, char **argv){
 	struct Cidade *head_cidade = (struct Cidade*)malloc(sizeof(struct Cidade)), *head_cidade_temp = (struct Cidade*)malloc(sizeof(struct Cidade));
     struct Cluster_interesses *head_interesses = (struct Cluster_interesses *)malloc(sizeof (struct Cluster_interesses)), *head_interesses_temp = (struct Cluster_interesses *)malloc(sizeof (struct Cluster_interesses));
     struct Perfil *perfil_temp = (struct Perfil*)malloc(sizeof (struct Perfil));
-    
+        
     char nome_pessoa[64], ler_char = 0;
 	int n_pessoas = 0, quantidade_cadastros = 0;
 	
@@ -44,7 +44,7 @@ int main (int argc, char **argv){
 	
 	head_cidade = mapear_grafo(head, 1);
 	head_interesses = mapear_interesses (head, 1);
-	insere_pessoas(&head, &head_cidade, &quantidade_cadastros);
+	insere_pessoasCidade(&head, &head_cidade, &quantidade_cadastros);
 	
 	head_cidade_temp = head_cidade;
 	
@@ -64,19 +64,29 @@ int main (int argc, char **argv){
 	printf("\nInteresses:\n");
 	
 	head_interesses_temp = head_interesses;
-	while(head_interesses_temp){
+	/*
+    while(head_interesses_temp){
 		//perfil_temp = head_interesses_temp->perfil;
 		printf("%s\n", head_interesses_temp->interesse);
 		
-		/*while(perfil_temp){
+		while(perfil_temp){
 			printf("%s / ", perfil_temp->nome);
 			
-		}*/
+		}
 		
 		head_interesses_temp = head_interesses_temp->prox;
 	}
-	
+    */
+    insere_pessoasInteresses(&head, &head_interesses);
     
+    while(head_interesses){
+        printf("// %s //: ", head_interesses->interesse);
+        while(head_interesses->lista){
+            printf("%s\n ", head_interesses->lista->perfil->nome);
+            head_interesses->lista = head_interesses->lista->proxi;
+        }
+        head_interesses = head_interesses->prox;
+    }
     
 	free(head); free(procurado);
 	
