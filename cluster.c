@@ -121,6 +121,7 @@ void insere_pessoasInteresses(struct No **head_perfis, struct Cluster_interesses
     struct lista_perfisInteresses *ultimoLista = NULL, *primeiroLista = NULL;
     
 	while(primeiro){
+		primeiro->counter = 0;
         while(firstNo){
             temp = firstNo->perfil.interesses;    
             while(temp){
@@ -136,20 +137,25 @@ void insere_pessoasInteresses(struct No **head_perfis, struct Cluster_interesses
                             nova->perfil = &firstNo->perfil;
                             primeiroLista = nova;
                             ultimoLista = primeiroLista;
+                            primeiro->counter += 1;
                             break;
                         } else {
                             nova->proxi = NULL;
                             nova->perfil = &firstNo->perfil;
                             ultimoLista->proxi = nova;
                             ultimoLista = nova; 
+                            primeiro->counter += 1;
                             break;
                         }
                        // temp = temp->prox_interesse;
+
                     }
+
             }    
             firstNo = firstNo->no_prox;
         }
-         
+        
+        
         firstNo = (*head_perfis);
         primeiro->lista = primeiroLista;
         primeiroLista = NULL;

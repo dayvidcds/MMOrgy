@@ -68,19 +68,7 @@ int main (int argc, char **argv){
 	printf("\nInteresses:\n");
 	
 	head_interesses_temp = head_interesses;
-	/*
-    while(head_interesses_temp){
-		//perfil_temp = head_interesses_temp->perfil;
-		printf("%s\n", head_interesses_temp->interesse);
-		
-		while(perfil_temp){
-			printf("%s / ", perfil_temp->nome);
-			
-		}
-		
-		head_interesses_temp = head_interesses_temp->prox;
-	}
-    */
+	
     insere_pessoasInteresses(&head, &head_interesses);
     
     while(head_interesses){
@@ -89,6 +77,7 @@ int main (int argc, char **argv){
             printf("%s\n ", head_interesses->lista->perfil->nome);
             head_interesses->lista = head_interesses->lista->proxi;
         }
+        printf("Quantidade: %d\n", head_interesses->counter);
         head_interesses = head_interesses->prox;
     }
     

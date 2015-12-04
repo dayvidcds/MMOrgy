@@ -12,6 +12,7 @@ struct Cluster_interesses {
     char interesse[32];
     struct lista_perfisInteresses *lista;
     struct Cluster_interesses *prox;
+    int counter;
 };
 
 struct lista_perfisInteresses {
