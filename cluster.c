@@ -115,7 +115,7 @@ void insere_pessoasInteresses(struct No **head_perfis, struct Cluster_interesses
 	struct Cluster_interesses *primeiro = (*head_interesses);
 	struct No *firstNo = (*head_perfis);
     struct Interesses *temp, *aux;
-    struct lista_perfisInteresses *ultimoLista, *primeiroLista;
+    struct lista_perfisInteresses *ultimoLista = NULL, *primeiroLista = NULL;
     
 	while(primeiro){
         while(firstNo){
