@@ -48,6 +48,8 @@ int main (int argc, char **argv){
 	
 	head_cidade_temp = head_cidade;
 	
+
+	//imprime os membros do cluster cidade
 	while(head_cidade_temp){
 		perfil_temp = head_cidade_temp->perfil;
 		printf("%s: ", head_cidade_temp->nome);
@@ -57,6 +59,8 @@ int main (int argc, char **argv){
 			perfil_temp = perfil_temp->prox_perfilCidade;
 		}
 		
+		printf("Quantidade: %d\n", head_cidade_temp->contador);
+
 		head_cidade_temp = head_cidade_temp->prox;
 		printf("\n");
 	}

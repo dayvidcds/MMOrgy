@@ -89,6 +89,8 @@ void insere_pessoasCidade(struct No **head_perfis, struct Cidade **head_cidades,
        
     while(primeiro){
 		
+    	primeiro->contador = 0;
+
 		for(i = 0; i < (*quantidade_perfis); ++i){
 			if(strcmp(firstNo->perfil.cidade, primeiro->nome) != 0){
 				firstNo = firstNo->no_prox;
@@ -102,6 +104,7 @@ void insere_pessoasCidade(struct No **head_perfis, struct Cidade **head_cidades,
 				}
                 ultimoPerfilClusterInserido->prox_perfilCidade = NULL;
 				firstNo = firstNo->no_prox;
+				primeiro->contador += 1;
 			}
         }
         firstNo = (*head_perfis);
@@ -235,10 +238,6 @@ struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inic
 						tempTeste = tempTeste->prox_interesse;
 						break;
 					}else{
-						//novo = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
-						//strcpy(novo->interesse, tempTeste->nome);
-        				//encadeia_interesses(&head_interesses,&interesses_fim,novo);
-        				//tempTeste = tempTeste->prox_amigo_interesse;
         				verif = 0;
         				continue;  
 				  	}
@@ -248,22 +247,12 @@ struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inic
 					novo = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
 					strcpy(novo->interesse, tempTeste->nome);
         			encadeia_interesses(&head_interesses,&interesses_fim,novo);
-        				//tempTeste = tempTeste->prox_interesse;
 				}
 
 			}
-			/*
-			if (!verif){
-				
-				for (temps = fila_inicio->no->perfil.interesses;temps != NULL; temps = temps->prox_interesse){
-               
-        			novo = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
-					strcpy(novo->interesse, temps->nome);
-        			encadeia_interesses(&interesses_fim,novo);    
-    			}
-    			*/
-        	}
-			
-		}
-		return head_interesses;
+        }
+
 	}
+
+	return head_interesses;
+}

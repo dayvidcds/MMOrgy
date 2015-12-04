@@ -5,6 +5,7 @@ struct Cidade{
 	char nome[32];
 	struct Perfil *perfil;
 	struct Cidade *prox;
+	int contador;
 };
 
 struct Cluster_interesses {
