@@ -25,5 +25,5 @@ struct Cidade *mapear_grafo (struct No *grafo, int index_Inicio);
 void insere_pessoasCidade(struct No **head_perfis, struct Cidade **head_cidades, int *quantidade_perfis);
 void encadeia_interesses (struct Cluster_interesses ** head_interesses,struct Cluster_interesses ** fim, struct Cluster_interesses * novo);
 struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inicio);
-void insere_pessoasInteresses();
+void insere_pessoasInteresses(struct No **head_perfis, struct Cluster_interesses **head_interesses);
 #endif
