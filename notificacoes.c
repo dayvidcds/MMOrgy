@@ -68,3 +68,39 @@ void inserir_notificacao(struct Notificar **lista, struct Notificar *novo){
 	}
 	(*lista) = novo;
 }
+
+void pushFile(struct No *head_no){
+
+	struct No *tmp_head = head_no;
+	FILE *arquivo = NULL;
+	struct Notificar *notif = NULL;
+	int i = 0;
+
+	while(tmp_head){
+    	notif = tmp_head->perfil.notificacoes;
+    	char nomeTemp[128];
+    	char nomeFile[128];
+    	strcpy(nomeTemp, tmp_head->perfil.nome);
+    	strcpy(nomeFile, "notificacoes/");
+
+    	for(i = 0; i < strlen(nomeTemp); i++){
+    		nomeTemp[i] = tolower(nomeTemp[i]);
+    	}
+    	
+    	strcat(nomeTemp, ".txt");
+    	strcat(nomeFile, nomeTemp);
+
+    	arquivo = fopen(nomeFile, "w");
+
+    	while(notif){
+			fprintf(arquivo, notif->notificacao);
+			fprintf(arquivo, "\n\n");
+
+			notif = notif->prox;
+		}
+    	
+    	tmp_head = tmp_head->no_prox;
+
+    }
+
+}
