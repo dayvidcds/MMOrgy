@@ -33,7 +33,7 @@ struct Cidade *mapear_grafo (struct No *grafo, int index_Inicio){
 	while(verif_visitas(&grafo)==1){
 		struct NoQueue *fila_temp = (struct NoQueue*)malloc(sizeof(struct NoQueue));
 		
-		//Insere n贸s correspondentes as arestas e remove os n贸s ja verificados da lista de prioridades
+		//Insere n髎 correspondentes as arestas e remove os n髎 ja verificados da lista de prioridades
 		for(fila_temp = fila_fim; fila_inicio!=fila_temp->fila_prox; fila_inicio = fila_inicio->fila_prox){
 			struct Amigos *temp_amigos = NULL;
 		
@@ -209,7 +209,7 @@ struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inic
     while(verif_visitas(&grafo)==1){
 		struct NoQueue *fila_temp = (struct NoQueue*)malloc(sizeof(struct NoQueue));
 		
-		//Insere n贸s correspondentes as arestas e remove os n贸s j谩 verificados da lista de prioridades
+		//Insere n髎 correspondentes as arestas e remove os n髎 j帷 verificados da lista de prioridades
 		for(fila_temp = fila_fim; fila_inicio!=fila_temp->fila_prox; fila_inicio = fila_inicio->fila_prox){
 			struct Amigos *temp_amigos = NULL;
 		
