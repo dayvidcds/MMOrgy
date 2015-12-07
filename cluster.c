@@ -33,7 +33,7 @@ struct Cidade *mapear_grafo (struct No *grafo, int index_Inicio){
 	while(verif_visitas(&grafo)==1){
 		struct NoQueue *fila_temp = (struct NoQueue*)malloc(sizeof(struct NoQueue));
 		
-		//Insere nós correspondentes as arestas e remove os nós já verificados da lista de prioridades
+		//Insere nós correspondentes as arestas e remove os nós ja verificados da lista de prioridades
 		for(fila_temp = fila_fim; fila_inicio!=fila_temp->fila_prox; fila_inicio = fila_inicio->fila_prox){
 			struct Amigos *temp_amigos = NULL;
 		

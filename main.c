@@ -18,7 +18,7 @@ int main (int argc, char **argv){
 	FILE *entrada = NULL;
 	
 	if(!argv[1]){
-		printf("Por favor, repasse o arquivo de texto como parâmetro para construção do grafo\n");
+		printf("Por favor, repasse o arquivo de texto como parametro para construcao do grafo\n");
 		return 1;
 	}
 	
@@ -42,9 +42,9 @@ int main (int argc, char **argv){
 	fclose(entrada);
 		
 	if(procurado){
-		printf("Encontrada! A busca passou por %d pessoas para encontrá-la.\n\n", n_pessoas);
+		printf("Encontrada! A busca passou por %d pessoas para encontra-la.\n\n", n_pessoas);
 	}else{
-		printf("Pessoa não encontrada\n");
+		printf("Pessoa nao encontrada\n");
 	}
 	
 	head_cidade = mapear_grafo(head, 1);

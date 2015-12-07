@@ -24,7 +24,6 @@ struct No *montar_grafo (FILE *entrada, int *qtdade_cadastros){
 		fgets(no_novo->perfil.sexo, 64, entrada);
 		strtok(no_novo->perfil.sexo, "\n");
 		fscanf(entrada, "\n%d", &no_novo->perfil.idade);
-		
 
 		fscanf(entrada, "\n%d", &quant_interesses);
 
@@ -69,7 +68,7 @@ struct No *montar_grafo (FILE *entrada, int *qtdade_cadastros){
 		}
 		
 		no_novo->perfil.amigos = amigos_inicio;
-		
+		no_novo->perfil.notificacoes = NULL;
 		//Aqui ele insere nó
 		if (no_fim==NULL){
 			no_inicio = no_fim = no_novo;
