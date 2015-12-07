@@ -2,7 +2,7 @@
 #define __NOTIFICACAO_H__
 
 struct Notificar{
-	struct Perfil *perfil;
+	char notificacao [256];
 	struct Notificar *prox;
 };
 

@@ -27,6 +27,7 @@ struct Perfil{
 	char nome[128];
 	char cidade[64];
 	char sexo[64];
+    char teste[64];
 	//enum Sexo {MASC = 1, FEM = 2} sexo;
 	int idade;
     //int marcado;
