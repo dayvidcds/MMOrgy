@@ -6,4 +6,6 @@ struct Notificar{
 	struct Notificar *prox;
 };
 
+void notificaCidades(struct Cidade **cidade_inicio);
+
 #endif

@@ -34,6 +34,7 @@ struct Perfil{
     struct Perfil *prox_perfilCidade;
 	struct Amigos *amigos;
 	struct Interesses *interesses;
+	struct Notificar *notificacoes; 
 };
 
 /* definição da estrutura do Nós do Grafo */

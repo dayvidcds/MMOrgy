@@ -1,14 +1,15 @@
 #include "grafo.h"
 #include "search.h"
 #include "cluster.h"
+#include "notificacoes.h"
 
 int main (int argc, char **argv){
-
 	
 	struct No *head = (struct No*)malloc(sizeof(struct No)), *procurado = NULL;
 	struct Cidade *head_cidade = (struct Cidade*)malloc(sizeof(struct Cidade)), *head_cidade_temp = (struct Cidade*)malloc(sizeof(struct Cidade));
     struct Cluster_interesses *head_interesses = (struct Cluster_interesses *)malloc(sizeof (struct Cluster_interesses)), *head_interesses_temp = (struct Cluster_interesses *)malloc(sizeof (struct Cluster_interesses));
     struct Perfil *perfil_temp = (struct Perfil*)malloc(sizeof (struct Perfil));
+    struct No *head_temp = NULL;
         
     char nome_pessoa[64], ler_char = 0;
 	int n_pessoas = 0, quantidade_cadastros = 0;
@@ -23,6 +24,9 @@ int main (int argc, char **argv){
 	entrada = fopen(argv[1], "r");
 	
 	head = montar_grafo(entrada, &quantidade_cadastros);
+
+	// Porque não imprime?
+	//printf("Nome: %s\n", head->no_prox->perfil.nome);
 
 	fscanf(entrada, "\n%c ", &ler_char);
 	
@@ -81,6 +85,18 @@ int main (int argc, char **argv){
         head_interesses_temp = head_interesses_temp->prox;
     }
     
+    notificaCidades(&head_cidade);
+
+    /*head_temp = head;
+
+	printf("Notificações - %s\n", head_temp->no_prox-perfil.nome);
+
+    while(head_temp){
+    	printf("Notificações - %s\n", head_temp->perfil.nome);
+    	printf("%s\n", head_temp->perfil.notificacoes->notificacao);
+    	
+    	head_temp = head_temp->no_prox;
+    }*/
     
 	free(head); free(procurado);
 	
