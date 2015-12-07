@@ -76,23 +76,9 @@ int main (int argc, char **argv){
     
     insere_pessoasInteresses(&head, &head_interesses);
     
+    notificaCidades(&head_cidade);
+
     notificaInteresses(&head_interesses);
-    
-    
-    
-    /*while(head_interesses_temp){
-        printf("// %s //: ", head_interesses_temp->interesse);
-        while(head_interesses_temp->lista){
-            printf("%s\n ", head_interesses_temp->lista->perfil->nome);
-            head_interesses_temp->lista = head_interesses_temp->lista->proxi;
-        }
-        printf("Quantidade: %d\n", head_interesses_temp->counter);
-        head_interesses_temp = head_interesses_temp->prox;
-    }*/
-    
-    //notificaCidades(&head_cidade);
-	
-	
 	
     head_temp = head;
 
