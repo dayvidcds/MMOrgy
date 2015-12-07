@@ -262,3 +262,29 @@ struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inic
 
 	return head_interesses;
 }
+
+void porcentagem_cidade (struct Cidade **head_cidades, int quant_perfis){
+    
+    struct Cidade *temp_cidade = (struct Cidade*)malloc(sizeof (struct Cidade));
+    
+        for (temp_cidade = (*head_cidades); temp_cidade != NULL;temp_cidade = temp_cidade->prox){
+            
+            int perfis = temp_cidade->contador;
+            int quant = quant_perfis;
+            float percent = ((float)perfis/quant)* 100.0;
+            temp_cidade->porcentagem = percent;
+        }
+}
+
+void porcentagem_interesses (struct Cluster_interesses **head_interesses, int quant_perfis){
+    
+    struct Cluster_interesses *temp_interesses = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
+    
+        for (temp_interesses = (*head_interesses); temp_interesses != NULL; temp_interesses = temp_interesses->prox){
+            
+            int perfis = temp_interesses->counter;
+            int quant = quant_perfis;
+            float porcentagem = ((float)perfis/quant)*100.0;
+            temp_interesses->percent = porcentagem;   
+        }
+}

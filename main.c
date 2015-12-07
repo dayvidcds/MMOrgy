@@ -3,6 +3,7 @@
 #include "cluster.h"
 #include "notificacoes.h"
 
+
 int main (int argc, char **argv){
 	
 	struct No *head = (struct No*)malloc(sizeof(struct No)), *procurado = NULL;
@@ -50,7 +51,7 @@ int main (int argc, char **argv){
 	head_cidade = mapear_grafo(head, 1);
 	head_interesses = mapear_interesses (head, 1);
 	insere_pessoasCidade(&head, &head_cidade, &quantidade_cadastros);
-	
+    
 	head_cidade_temp = head_cidade;
 	
 
