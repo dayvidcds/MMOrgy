@@ -21,7 +21,7 @@ void notificaCidades(struct Cidade **cidade_inicio){
 
 			noti = (struct Notificar *)malloc(sizeof(struct Notificar));
 
-			strcpy(strTemp, "Você entrou no grupo das pessoas que moram em ");
+			strcpy(strTemp, "Voce entrou no grupo das pessoas que moram em ");
 			strcat(strTemp, temp_cidade->nome);
 			strcpy(noti->notificacao, strTemp);
 
@@ -44,7 +44,7 @@ void notificaInteresses(struct Cluster_interesses **head_interesses){
 		struct lista_perfisInteresses *temp_listaPerfis = NULL;
 		char notificacao[256];
 		
-		strcpy(notificacao, "Hey dlç! Você entrou no grupo sobre ");
+		strcpy(notificacao, "Hey dlc! Voce entrou no grupo sobre ");
 		strcat(notificacao, temp_interesses->interesse);
 		
 		temp_listaPerfis = temp_interesses->lista;

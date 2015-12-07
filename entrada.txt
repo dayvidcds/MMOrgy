@@ -1,6 +1,6 @@
 5
 
-João Neto
+Joao Neto
 Caruaru
 MASC
 20
@@ -21,7 +21,7 @@ MASC
 3 Uva Filosofia drogas
 3 1 4 5 
 
-Lucas Feijó
+Lucas Feijo
 Caruaru
 MASC
 20
@@ -35,4 +35,4 @@ MASC
 2 Embarcados League
 3 2 3 4 
 
-B Lucas Feijó
+B Lucas Feijo

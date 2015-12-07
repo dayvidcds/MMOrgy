@@ -97,7 +97,7 @@ int main (int argc, char **argv){
     head_temp = head;
 
     while(head_temp){
-    	printf("Notificações - %s:\n", head_temp->perfil.nome);
+    	printf("Notificacoes - %s:\n", head_temp->perfil.nome);
     	notif_temp = head_temp->perfil.notificacoes;
     	
     	while(notif_temp){
