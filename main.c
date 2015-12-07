@@ -10,6 +10,7 @@ int main (int argc, char **argv){
     struct Cluster_interesses *head_interesses = (struct Cluster_interesses *)malloc(sizeof (struct Cluster_interesses)), *head_interesses_temp = (struct Cluster_interesses *)malloc(sizeof (struct Cluster_interesses));
     struct Perfil *perfil_temp = (struct Perfil*)malloc(sizeof (struct Perfil));
     struct No *head_temp = NULL;
+    struct Notificar *notif_temp = NULL;
         
     char nome_pessoa[64], ler_char = 0;
 	int n_pessoas = 0, quantidade_cadastros = 0;
@@ -69,13 +70,17 @@ int main (int argc, char **argv){
 		printf("\n");
 	}
 	
-	printf("\nInteresses:\n");
+	//printf("\nInteresses:\n");
 	
     head_interesses_temp = head_interesses;
     
     insere_pessoasInteresses(&head, &head_interesses);
     
-    while(head_interesses_temp){
+    notificaInteresses(&head_interesses);
+    
+    
+    
+    /*while(head_interesses_temp){
         printf("// %s //: ", head_interesses_temp->interesse);
         while(head_interesses_temp->lista){
             printf("%s\n ", head_interesses_temp->lista->perfil->nome);
@@ -83,20 +88,26 @@ int main (int argc, char **argv){
         }
         printf("Quantidade: %d\n", head_interesses_temp->counter);
         head_interesses_temp = head_interesses_temp->prox;
-    }
+    }*/
     
-    notificaCidades(&head_cidade);
-
-    /*head_temp = head;
-
-	printf("Notificações - %s\n", head_temp->no_prox-perfil.nome);
+    //notificaCidades(&head_cidade);
+	
+	
+	
+    head_temp = head;
 
     while(head_temp){
-    	printf("Notificações - %s\n", head_temp->perfil.nome);
-    	printf("%s\n", head_temp->perfil.notificacoes->notificacao);
+    	printf("Notificações - %s:\n", head_temp->perfil.nome);
+    	notif_temp = head_temp->perfil.notificacoes;
+    	
+    	while(notif_temp){
+			printf("%s\n", notif_temp->notificacao);
+			notif_temp = notif_temp->prox;
+		}
     	
     	head_temp = head_temp->no_prox;
-    }*/
+    	printf("\n");
+    }
     
 	free(head); free(procurado);
 	

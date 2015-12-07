@@ -36,3 +36,35 @@ void notificaCidades(struct Cidade **cidade_inicio){
 	}
 
 }
+
+void notificaInteresses(struct Cluster_interesses **head_interesses){
+	struct Cluster_interesses *temp_interesses = (*head_interesses);
+	
+	while(temp_interesses){
+		struct lista_perfisInteresses *temp_listaPerfis = NULL;
+		char notificacao[256];
+		
+		strcpy(notificacao, "Hey dlç! Você entrou no grupo sobre ");
+		strcat(notificacao, temp_interesses->interesse);
+		
+		temp_listaPerfis = temp_interesses->lista;
+		
+		while(temp_listaPerfis){
+			struct Notificar *notif_interesse = (struct Notificar*)malloc(sizeof(struct Notificar));
+			
+			strcpy(notif_interesse->notificacao, notificacao);
+			inserir_notificacao(&temp_listaPerfis->perfil->notificacoes, notif_interesse);
+			
+			temp_listaPerfis = temp_listaPerfis->proxi;
+		}
+		
+		temp_interesses = temp_interesses->prox;
+	}
+}
+
+void inserir_notificacao(struct Notificar **lista, struct Notificar *novo){
+	if((*lista)){
+		novo->prox = (*lista);
+	}
+	(*lista) = novo;
+}
