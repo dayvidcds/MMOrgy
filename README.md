@@ -1,4 +1,4 @@
-# MMOrgy (an <h2> tag) # 
+# MMOrgy <h2> # 
 
 Trabalho de Linguagem de Programação 1
 
