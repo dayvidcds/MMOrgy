@@ -2,7 +2,7 @@
 #include "search.h"
 #include "cluster.h"
 #include "notificacoes.h"
-
+#include <ctype.h>
 
 /* falta terminar */
 
