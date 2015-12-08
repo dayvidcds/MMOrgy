@@ -263,20 +263,48 @@ struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inic
 	return head_interesses;
 }
 
-void porcentagem_cidade (struct Cidade **head_cidades, int quant_perfis){
-    
+//falta consertar o calc da porcentagem e também ver o porque que ele não tá exibindo certinho os interesses para cada cidade
+void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses **head_interesses){
+	struct Cluster_interesses *temp_interesses = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
     struct Cidade *temp_cidade = (struct Cidade*)malloc(sizeof (struct Cidade));
+    struct Perfil *perfil_temp = (struct Perfil*)malloc(sizeof (struct Perfil));
+    struct Cidade *head_cidade_temp = *head_cidades;
     
-        for (temp_cidade = (*head_cidades); temp_cidade != NULL;temp_cidade = temp_cidade->prox){
+    while(head_cidade_temp){
+    	
+		perfil_temp = head_cidade_temp->perfil;
+		printf("\n%d pessoas mora(m) em %s\n", head_cidade_temp->contador, head_cidade_temp->nome);
+		head_cidade_temp = head_cidade_temp->prox;
+		
+	}
+	
+	head_cidade_temp = *head_cidades;
+	
+	while(head_cidade_temp){
+		int quant_perfis;
+		perfil_temp = head_cidade_temp->perfil;
+		quant_perfis = head_cidade_temp->contador;
+		printf("\n\nDados referentes a cidade de %s:\n\n", head_cidade_temp->nome);
+		
+		for (temp_interesses = (*head_interesses); temp_interesses != NULL; temp_interesses = temp_interesses->prox){
             
-            int perfis = temp_cidade->contador;
-            int quant = quant_perfis;
-            float percent = ((float)perfis/quant)* 100.0;
-            temp_cidade->porcentagem = percent;
+            int perfis = temp_interesses->counter;
+			float porcentagem;
+			
+			if(strcmp(temp_interesses->lista->perfil->cidade, head_cidade_temp->nome) == 0){
+				porcentagem = ((float)perfis/quant_perfis)*100.0;
+            	temp_interesses->percent = porcentagem;  
+				printf("De todas as pessoas dessa cidade %f%% curtem %s\n", temp_interesses->percent, temp_interesses->interesse);
+			}
+			 
         }
+		
+		head_cidade_temp = head_cidade_temp->prox;
+	}
+    
 }
 
-void porcentagem_interesses (struct Cluster_interesses **head_interesses, int quant_perfis){
+/*void porcentagem_interesses (struct Cluster_interesses **head_interesses, int quant_perfis){
     
     struct Cluster_interesses *temp_interesses = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
     
@@ -285,6 +313,7 @@ void porcentagem_interesses (struct Cluster_interesses **head_interesses, int qu
             int perfis = temp_interesses->counter;
             int quant = quant_perfis;
             float porcentagem = ((float)perfis/quant)*100.0;
-            temp_interesses->percent = porcentagem;   
+            temp_interesses->percent = porcentagem;  
+			printf("\n %s tem %f%%\n", temp_interesses->interesse, temp_interesses->percent); 
         }
-}
+}*/

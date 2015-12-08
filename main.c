@@ -96,6 +96,8 @@ int main (int argc, char **argv){
     	printf("\n");
     }
     
+    porcentagem_cidade(&head_cidade, &head_interesses);
+    
 	free(head); free(procurado);
 	
 	return 0;
