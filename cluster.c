@@ -294,7 +294,7 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
 			if(strcmp(temp_interesses->lista->perfil->cidade, head_cidade_temp->nome) == 0){
 				porcentagem = ((float)perfis/quant_perfis)*100.0;
             	temp_interesses->percent = porcentagem;  
-				printf("De todas as pessoas dessa cidade %f%% curtem %s\n", temp_interesses->percent, temp_interesses->interesse);
+				printf("De todas as pessoas dessa cidade %.2f%% curtem %s\n", temp_interesses->percent, temp_interesses->interesse);
 			}
 			 
         }
