@@ -311,6 +311,7 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
     
 }
 
+//interesses em % geral
 /*void porcentagem_interesses (struct Cluster_interesses **head_interesses, int quant_perfis){
     
     struct Cluster_interesses *temp_interesses = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
