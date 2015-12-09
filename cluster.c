@@ -263,42 +263,49 @@ struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inic
 	return head_interesses;
 }
 
-//falta consertar o calc da porcentagem e também ver o porque que ele não tá exibindo certinho os interesses para cada cidade
+//Aqui é mostrado em % a quantidade de pessoas de cada cluster de interesses para cada cidade
 void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses **head_interesses){
+	struct lista_perfisInteresses *perfis_interesses = (struct lista_perfisInteresses*) malloc(sizeof(struct lista_perfisInteresses));
 	struct Cluster_interesses *temp_interesses = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
-    struct Cidade *temp_cidade = (struct Cidade*)malloc(sizeof (struct Cidade));
-    struct Perfil *perfil_temp = (struct Perfil*)malloc(sizeof (struct Perfil));
+	struct Cidade *temp_cidade = (struct Cidade*) malloc(sizeof (struct Cidade));
     struct Cidade *head_cidade_temp = *head_cidades;
     
     while(head_cidade_temp){
     	
-		perfil_temp = head_cidade_temp->perfil;
 		printf("\n%d pessoas mora(m) em %s\n", head_cidade_temp->contador, head_cidade_temp->nome);
 		head_cidade_temp = head_cidade_temp->prox;
 		
 	}
 	
 	head_cidade_temp = *head_cidades;
-	
+	//aqui ele verifica cidade por cidade
 	while(head_cidade_temp){
-		int quant_perfis;
-		perfil_temp = head_cidade_temp->perfil;
-		quant_perfis = head_cidade_temp->contador;
+
+		int quant_perfis = head_cidade_temp->contador;
+		float porcentagem = 0.0f;
+		
 		printf("\n\nDados referentes a cidade de %s:\n\n", head_cidade_temp->nome);
-		
-		for (temp_interesses = (*head_interesses); temp_interesses != NULL; temp_interesses = temp_interesses->prox){
-            
-            int perfis = temp_interesses->counter;
-			float porcentagem;
+		//aqui contamos quantas pessoas curtem certa coisa de uma certa cidade
+		for(temp_interesses = (*head_interesses); temp_interesses != NULL; temp_interesses = temp_interesses->prox){
+				
+			int perfis = 0;
 			
-			if(strcmp(temp_interesses->lista->perfil->cidade, head_cidade_temp->nome) == 0){
-				porcentagem = ((float)perfis/quant_perfis)*100.0;
-            	temp_interesses->percent = porcentagem;  
-				printf("De todas as pessoas dessa cidade %f%% curtem %s\n", temp_interesses->percent, temp_interesses->interesse);
+			//loop responsável por incrementar o valor da quantidade de pessoas por interesses de cada cidade
+			for(perfis_interesses = temp_interesses->lista; perfis_interesses != NULL; perfis_interesses = perfis_interesses->proxi){
+			
+				if(strcmp(perfis_interesses->perfil->cidade, head_cidade_temp->nome) == 0) perfis+=1;
+				
 			}
-			 
+			//imprimindo e verificando qual grupo(cluster) que possui mais membros
+			porcentagem = ((float)perfis/quant_perfis)*100.0;
+			if(porcentagem > 0){
+					
+            	temp_interesses->percent = porcentagem;
+				printf("De todas as pessoas dessa cidade %.2f%% curtem %s\n", temp_interesses->percent, temp_interesses->interesse);
+	
+	   		}
         }
-		
+        
 		head_cidade_temp = head_cidade_temp->prox;
 	}
     
