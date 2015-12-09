@@ -1,5 +1,19 @@
 5
 
+Silvano
+Jatauba
+MASC
+18
+4 Uva Filosofia drogas Asnos
+3 1 4 5 
+
+Dayvid Arduino
+Jatauba
+MASC
+18
+5 Embarcados League Asnos ISIS Travecos_de_padre
+3 2 3 4
+
 Joao Neto
 Caruaru
 MASC
@@ -11,15 +25,8 @@ Matheus
 Caruaru
 FEM
 17
-3 basquete drogas Asnos
-2 1 5
-
-Silvano
-Jatauba
-MASC
-18
-4 Uva Filosofia drogas Asnos
-3 1 4 5 
+4 basquete drogas Asnos League
+2 1 5 
 
 Lucas Feijo
 Caruaru
@@ -28,13 +35,5 @@ MASC
 3 Rihanna League Travecos_de_padre
 2 3 5
 
-Dayvid Arduino
-Cha Pequeno
-MASC
-18
-5 Embarcados League Asnos ISIS Travecos_de_padre
-3 2 3 4 
-
 B Lucas Feijo
-
 B Dayvid Arduino
