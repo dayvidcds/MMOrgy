@@ -40,8 +40,7 @@ int main (int argc, char **argv){
 		strtok(nome_pessoa, "\n");
 		procurado = buscaLargura(head, 1, nome_pessoa, &n_pessoas);
 	}
-	
-	
+		
 	fclose(entrada);
 		
 	if(procurado){
@@ -54,23 +53,7 @@ int main (int argc, char **argv){
 	head_interesses = mapear_interesses (head, 1);
 	insere_pessoasCidade(&head, &head_cidade, &quantidade_cadastros);	
 
-    //imprime os membros do cluster cidade
     imprime_membros_Cidade(newsfeed, &head_cidade);
-	
-/*	while(head_cidade_temp){
-		perfil_temp = head_cidade_temp->perfil;
-		fprintf(estatisticas, "%s: ", head_cidade_temp->nome);
-		
-		while(perfil_temp){
-			fprintf(estatisticas, "%s / ", perfil_temp->nome);
-			perfil_temp = perfil_temp->prox_perfilCidade;
-		}
-		
-		fprintf(estatisticas, "Quantidade: %d\n", head_cidade_temp->contador);
-
-		head_cidade_temp = head_cidade_temp->prox;
-		fprintf(estatisticas, "\n");
-	}*/
 	
 	fprintf(newsfeed, "\nInteresses:\n");
 	
@@ -83,19 +66,7 @@ int main (int argc, char **argv){
     notificaInteresses(&head_interesses);
 	
     imprime_notificacoes(newsfeed, &head);
-    /*while(head_temp){
-    	fprintf(estatisticas, "Notificacoes - %s:\n", head_temp->perfil.nome);
-    	notif_temp = head_temp->perfil.notificacoes;
-    	
-    	while(notif_temp){
-			fprintf(estatisticas, "%s\n", notif_temp->notificacao);
-			notif_temp = notif_temp->prox;
-		}
-    	
-    	head_temp = head_temp->no_prox;
-    	fprintf(estatisticas, "\n");
-    }*/
-    
+       
     porcentagem_cidade(&head_cidade, &head_interesses);
     
 	free(head); free(procurado);
