@@ -68,6 +68,16 @@ int main (int argc, char **argv){
     imprime_notificacoes(newsfeed, &head);
        
     porcentagem_cidade(&head_cidade, &head_interesses);
+	
+	popular(head,newsfeed);
+	
+	fprintf(newsfeed,"\n");
+	
+	popular_grupo(head_cidade,newsfeed);
+	
+	fprintf(newsfeed,"\n");
+	
+	popular_interesses(head_interesses,newsfeed);
     
 	free(head); free(procurado);
 	

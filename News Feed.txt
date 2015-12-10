@@ -1,0 +1,64 @@
+Encontrada! A busca passou por 1 pessoas para encontra-la.
+
+Jatauba: Silvano / Quantidade: 1
+
+Caruaru: Joao Neto / Matheus / Lucas Feijo / Quantidade: 3
+
+Cha pequeno: Dayvid Arduino / Wedson / Quantidade: 2
+
+
+Interesses:
+Notificacoes - Silvano:
+Hey dlc! Voce entrou no grupo sobre Asnos
+Hey dlc! Voce entrou no grupo sobre drogas
+Hey dlc! Voce entrou no grupo sobre Filosofia
+Hey dlc! Voce entrou no grupo sobre Uva
+Voce entrou no grupo das pessoas que moram em Jatauba
+
+Notificacoes - Dayvid Arduino:
+Hey dlc! Voce entrou no grupo sobre ISIS
+Hey dlc! Voce entrou no grupo sobre Embarcados
+Hey dlc! Voce entrou no grupo sobre Travecos_de_padre
+Hey dlc! Voce entrou no grupo sobre Asnos
+Voce entrou no grupo das pessoas que moram em Cha pequeno
+
+Notificacoes - Joao Neto:
+Hey dlc! Voce entrou no grupo sobre Python
+Hey dlc! Voce entrou no grupo sobre Web
+Hey dlc! Voce entrou no grupo sobre League
+Voce entrou no grupo das pessoas que moram em Caruaru
+
+Notificacoes - Matheus:
+Hey dlc! Voce entrou no grupo sobre League
+Hey dlc! Voce entrou no grupo sobre basquete
+Hey dlc! Voce entrou no grupo sobre drogas
+Voce entrou no grupo das pessoas que moram em Caruaru
+
+Notificacoes - Lucas Feijo:
+Hey dlc! Voce entrou no grupo sobre Travecos_de_padre
+Hey dlc! Voce entrou no grupo sobre Rihanna
+Hey dlc! Voce entrou no grupo sobre League
+Voce entrou no grupo das pessoas que moram em Caruaru
+
+Notificacoes - Wedson:
+Hey dlc! Voce entrou no grupo sobre Embarcados
+Hey dlc! Voce entrou no grupo sobre Wesley
+Hey dlc! Voce entrou no grupo sobre Comida_eh_tudo
+Hey dlc! Voce entrou no grupo sobre League
+Voce entrou no grupo das pessoas que moram em Cha pequeno
+
+Silvano e popular na rede
+Dayvid Arduino e popular na rede
+Joao Neto e popular na rede
+Matheus e popular na rede
+Lucas Feijo e popular na rede
+Wedson e popular na rede
+
+Silvano e popular no grupo de Jatauba 
+Dayvid Arduino e popular no grupo de Cha pequeno 
+Wedson e popular no grupo de Cha pequeno 
+
+Matheus e popular no grupo de interesses basquete 
+Joao Neto e popular no grupo de interesses Web 
+Joao Neto e popular no grupo de interesses Python 
+Dayvid Arduino e popular no grupo de interesses ISIS 

@@ -327,6 +327,63 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
 	}
 }
 
+void popular(struct No *head,FILE *newsfeed){
+	struct No *temp=(struct No*)malloc(sizeof(struct No));
+	struct Amigos *friends=(struct Amigos*)malloc(sizeof(struct Amigos));
+	int i=0,j=0;
+	
+	for(temp=head;temp!=NULL;temp=temp->no_prox){
+		i++;
+	}
+	
+	for(temp=head;temp!=NULL;temp=temp->no_prox){
+		for(friends=temp->perfil.amigos;friends!=NULL;friends=friends->prox_amigo){
+			j++;
+		}
+		if(j>=(i/2)){
+			fprintf(newsfeed,"%s e popular na rede\n",temp->perfil.nome);
+		}
+	}
+}
+
+void popular_grupo(struct Cidade *head,FILE *newsfeed){
+	struct Cidade *temp=(struct Cidade*)malloc(sizeof(struct Cidade));
+	struct Perfil *tempo=(struct Perfil*)malloc(sizeof(struct Perfil));
+	struct Amigos *colegas=(struct Amigos*)malloc(sizeof(struct Amigos));
+	int i;
+	
+	for(temp=head;temp!=NULL;temp=temp->prox){
+		for(tempo=temp->perfil;tempo!=NULL;tempo=tempo->prox_perfilCidade){
+			for(colegas=temp->perfil->amigos;colegas!=NULL;colegas=colegas->prox_amigo){
+			i++;
+			}
+			if(i>temp->contador){
+				fprintf(newsfeed,"%s e popular no grupo de %s \n",tempo->nome,temp->nome);
+			}
+			i=0;
+		}
+	}
+}
+
+void popular_interesses(struct  Cluster_interesses *head,FILE *newsfeed){
+	struct Cluster_interesses *temp=(struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
+	struct lista_perfisInteresses *tempo=(struct lista_perfisInteresses*)malloc(sizeof(struct lista_perfisInteresses));
+	struct Perfil *colegas=(struct Perfil*)malloc(sizeof(struct Perfil));
+	int i=0;
+	
+	for(temp=head;temp!=NULL;temp=temp->prox){
+		for(tempo=temp->lista;tempo!=NULL;tempo=tempo->proxi){
+			for(colegas=tempo->perfil;colegas!=NULL;colegas=colegas->prox_perfilCidade){
+			i++;
+			}
+			if(i>temp->counter){
+				fprintf(newsfeed,"%s e popular no grupo de interesses %s \n",tempo->perfil->nome,temp->interesse);
+			}
+			i=0;
+		}
+	}
+}
+
 void inserirFilaDeInteresses(struct NoListaInteresses **ultimo, struct NoListaInteresses **inicio, struct NoListaInteresses *novo){
 	if((*ultimo) != NULL){
 		novo->prox = (*ultimo)->prox;
