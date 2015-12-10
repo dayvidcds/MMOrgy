@@ -307,24 +307,21 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
 			//convertendo quantidade de pessoas da cidade por quantidade de pessoas do grupo na cidade para %
 			porcentagem = ((float)perfis/quant_perfis)*100.0;
 			
-			//imprimindo e verificando qual grupo(cluster) que possui mais membros
+			//verificando se porcentagem é maior que 0 e depois comparando qual interesse tem a maior porcentagem para poder jogar na lista
 			if(porcentagem > 0){
 					
             	temp_interesses->percent = porcentagem;
 				printf("De todas as pessoas dessa cidade %.2f%% curtem %s\n", temp_interesses->percent, temp_interesses->interesse);
 				
 				if(temp_interesses->percent >= GMOVI->lista->percent){
-					//GMOVI_TEMP = temp_interesses;
 					GMOVI = (struct NoListaInteresses *) malloc(sizeof(struct NoListaInteresses));
 					GMOVI->lista = temp_interesses;
 					inserirFilaDeInteresses(&ultimo, &inicio, GMOVI);
-					//printf("\n\nGrupo(s) mais movimentado(s) -> %s\n\n", inicio->lista->interesse);
 				}
 				
 	   		}
 	   	
         }
-        //printf("\n\nGrupo(s) mais movimentado(s) -> %s\n\n", inicio->lista->interesse);
 		imprimir(inicio);
 		head_cidade_temp = head_cidade_temp->prox;
 	}
