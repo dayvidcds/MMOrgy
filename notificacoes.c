@@ -10,22 +10,25 @@ void notificaCidades(struct Cidade **cidade_inicio){
 
 	struct Cidade *temp_cidade = (*cidade_inicio);
 	struct Perfil *temp_perfil = NULL;
-	struct Notificar *noti = NULL;
-	char strTemp[256];
+	struct Notificar *notif_cidades = NULL;
+	
 
 	while(temp_cidade){
+
+		char strTemp[256];
+
+		strcpy(strTemp, "Voce entrou no grupo das pessoas que moram em ");
+		strcat(strTemp, temp_cidade->nome);
 
 		temp_perfil = temp_cidade->perfil;
 
 		while(temp_perfil){
 
-			noti = (struct Notificar *)malloc(sizeof(struct Notificar));
+			notif_cidades = (struct Notificar *)malloc(sizeof(struct Notificar));
 
-			strcpy(strTemp, "Voce entrou no grupo das pessoas que moram em ");
-			strcat(strTemp, temp_cidade->nome);
-			strcpy(noti->notificacao, strTemp);
+			strcpy(notif_cidades->notificacao, strTemp);
 
-			temp_perfil->notificacoes = noti;
+			inserir_notificacao(&temp_perfil->notificacoes, notif_cidades);
 
 			temp_perfil = temp_perfil->prox_perfilCidade;
 
