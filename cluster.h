@@ -34,9 +34,11 @@ void encadeia_interesses (struct Cluster_interesses ** head_interesses,struct Cl
 struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inicio);
 void insere_pessoasInteresses(struct No **head_perfis, struct Cluster_interesses **head_interesses);
 void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses **head_interesses);
-void porcentagem_interesses (struct Cluster_interesses **head_interesses, int quant_perfis);
 void inserirFilaDeInteresses(struct NoListaInteresses **ultimo, struct NoListaInteresses **inicio, struct NoListaInteresses *novo);
 void imprimir(struct NoListaInteresses *lista);
 void removerDaFilaDeInteresses(struct NoListaInteresses **inicio);
+void popular(struct No *head,FILE *newsfeed);
+void popular_grupo(struct Cidade *head,FILE *newsfeed);
+void popular_interesses(struct  Cluster_interesses *head,FILE *newsfeed);
 
 #endif

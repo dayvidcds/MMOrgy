@@ -4,7 +4,7 @@
 #include "notificacoes.h"
 #include <ctype.h>
 
-/* falta terminar */
+
 
 void notificaCidades(struct Cidade **cidade_inicio){
 
@@ -106,4 +106,69 @@ void pushFile(struct No *head_no){
 
     }
 
+}
+
+void sugestao_perfil(struct No **head_perfis, struct Cluster_interesses **head_interesses){
+	struct No *perfil_temp = (*head_perfis);
+	struct Cluster_interesses *cluster_temp = NULL;
+
+	while(perfil_temp){
+		struct Interesses *interesses_perfil = perfil_temp->perfil.interesses;
+
+		while(interesses_perfil){
+			cluster_temp = (*head_interesses);
+
+			while(cluster_temp){
+				if(!strcmp(interesses_perfil->nome, cluster_temp->interesse)){
+
+					struct lista_perfisInteresses *lstperfInt_temp = cluster_temp->lista;
+
+					while(lstperfInt_temp){
+						if(!strcmp(perfil_temp->perfil.nome, lstperfInt_temp->perfil->nome)){
+							lstperfInt_temp = lstperfInt_temp->proxi;
+							continue;
+						}
+
+						if(!strcmp(perfil_temp->perfil.cidade, lstperfInt_temp->perfil->cidade)){
+							int alerta = 0;
+							struct Amigos *lista_amigos = perfil_temp->perfil.amigos;
+
+							while(lista_amigos){
+								struct No *amigo_temp = list_get(head_perfis, lista_amigos->indice);
+
+								if(!strcmp(amigo_temp->perfil.nome, lstperfInt_temp->perfil->nome)){
+									alerta = 1;
+									break;
+								}
+
+								lista_amigos = lista_amigos->prox_amigo;
+							}
+
+							if(!alerta){
+								struct Notificar *notif_interesse = (struct Notificar*)malloc(sizeof(struct Notificar));
+								char notificacao[256];
+		
+								strcpy(notificacao, lstperfInt_temp->perfil->nome);
+								strcat(notificacao, " gosta de ");
+								strcat(notificacao, interesses_perfil->nome);
+								strcat(notificacao, " e mora na mesma cidade que a sua. Não quer conhece-lo(a)?");
+
+								strcpy(notif_interesse->notificacao, notificacao);
+								inserir_notificacao(&perfil_temp->perfil.notificacoes, notif_interesse);
+							}
+							
+						}
+
+						lstperfInt_temp = lstperfInt_temp->proxi;
+					}
+				}
+
+				cluster_temp = cluster_temp->prox;
+			}
+
+			interesses_perfil = interesses_perfil->prox_interesse;
+		}
+
+		perfil_temp = perfil_temp->no_prox;
+	}
 }

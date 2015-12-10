@@ -16,5 +16,6 @@ void notificaCidades(struct Cidade **cidade_inicio);
 void notificaInteresses(struct Cluster_interesses **head_interesses);
 void inserir_notificacao(struct Notificar **inicio_lista, struct Notificar *novo);
 void pushFile(struct No *head_no);
+void sugestao_perfil(struct No **head_perfis, struct Cluster_interesses **head_interesses);
 
 #endif

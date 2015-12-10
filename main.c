@@ -64,6 +64,8 @@ int main (int argc, char **argv){
     notificaCidades(&head_cidade);
 
     notificaInteresses(&head_interesses);
+
+    sugestao_perfil(&head, &head_interesses);
 	
     imprime_notificacoes(newsfeed, &head);
        
@@ -78,6 +80,8 @@ int main (int argc, char **argv){
 	fprintf(newsfeed,"\n");
 	
 	popular_interesses(head_interesses,newsfeed);
+
+	pushFile(head);
     
 	free(head); free(procurado);
 	
