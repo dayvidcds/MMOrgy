@@ -69,7 +69,7 @@ int main (int argc, char **argv){
 	
     imprime_notificacoes(newsfeed, &head);
        
-    porcentagem_cidade(&head_cidade, &head_interesses);
+    porcentagem_cidade(&head_cidade, &head_interesses, newsfeed);
 	
 	popular(head,newsfeed);
 	

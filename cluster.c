@@ -266,7 +266,7 @@ struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inic
 /*Aqui é mostrado em % a quantidade de pessoas de cada cluster de interesses para cada cidade e ao mesmo tempo
 separado os grupos com mais pessoas para cada cidade e depois notificando as pessoas da cidade que não fazem parte
 do grupo*/
-void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses **head_interesses){
+void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses **head_interesses, FILE *arquivo){
 	struct lista_perfisInteresses *perfis_interesses = NULL;
 	struct Cluster_interesses *temp_interesses = NULL;
 	struct Cidade *temp_cidade = NULL;
@@ -276,7 +276,7 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
     
     while(head_cidade_temp){
     	
-		printf("\n%d pessoas mora(m) em %s\n", head_cidade_temp->contador, head_cidade_temp->nome);
+		fprintf(arquivo, "\n%d pessoas mora(m) em %s\n", head_cidade_temp->contador, head_cidade_temp->nome);
 		head_cidade_temp = head_cidade_temp->prox;
 		
 	}
@@ -287,11 +287,12 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
 	while(head_cidade_temp){
 		struct NoListaInteresses *inicio = NULL;
     	struct NoListaInteresses *ultimo = NULL;
+    	struct NoListaInteresses *temp_inicio = NULL;
 		int quant_perfis = head_cidade_temp->contador;
 		float porcentagem = 0.0f;
 		GMOVI->lista = *head_interesses;
 		
-		printf("\n\nDados referentes a cidade de %s:\n\n", head_cidade_temp->nome);
+		fprintf(arquivo, "\n\nDados referentes a cidade de %s:\n\n", head_cidade_temp->nome);
 		//aqui contamos quantas pessoas curtem certa coisa de uma certa cidade
 		for(temp_interesses = (*head_interesses); temp_interesses != NULL; temp_interesses = temp_interesses->prox){
 				
@@ -311,7 +312,7 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
 			if(porcentagem > 0){
 					
             	temp_interesses->percent = porcentagem;
-				printf("De todas as pessoas dessa cidade %.2f%% curtem %s\n", temp_interesses->percent, temp_interesses->interesse);
+				fprintf(arquivo, "De todas as pessoas dessa cidade %.2f%% curtem %s\n", temp_interesses->percent, temp_interesses->interesse);
 				
 				if(temp_interesses->percent >= GMOVI->lista->percent){
 					GMOVI = (struct NoListaInteresses *) malloc(sizeof(struct NoListaInteresses));
@@ -322,7 +323,18 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
 	   		}
 	   	
         }
-		imprimir(inicio);
+		//imprimir(inicio);
+
+        temp_inicio = inicio;
+
+		while(temp_inicio != NULL){
+
+			fprintf(arquivo, "\nGrupo(s) mais movimentado(s) -> %s", temp_inicio->lista->interesse);
+			temp_inicio = temp_inicio->prox;
+		
+		}
+		fprintf(arquivo, "\n\n");
+
 		head_cidade_temp = head_cidade_temp->prox;
 	}
 }
@@ -400,7 +412,7 @@ void removerDaFilaDeInteresses(struct NoListaInteresses **inicio){
 	(*inicio) = (*inicio)->prox;
 }
 
-void imprimir(struct NoListaInteresses *Lista){
+/*void imprimir(struct NoListaInteresses *Lista){
 	
 	while(Lista != NULL){
 		
@@ -409,4 +421,4 @@ void imprimir(struct NoListaInteresses *Lista){
 		
 	}
 	printf("\n\n");
-}
+}*/
