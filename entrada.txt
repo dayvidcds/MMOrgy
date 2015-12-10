@@ -1,18 +1,18 @@
-5
+6
 
 Silvano
 Jatauba
 MASC
 18
 4 Uva Filosofia drogas Asnos
-3 1 4 5 
+4 1 4 5 6
 
 Dayvid Arduino
-Jatauba
+Cha pequeno
 MASC
 18
-5 Embarcados League Asnos ISIS Travecos_de_padre
-3 2 3 4
+4 Embarcados Asnos ISIS Travecos_de_padre
+4 2 3 4 6
 
 Joao Neto
 Caruaru
@@ -35,5 +35,12 @@ MASC
 3 Rihanna League Travecos_de_padre
 2 3 5
 
+Wedson
+Cha pequeno
+FEM
+18
+4 League Comida_eh_tudo Wesley Embarcados
+2 1 2
+
+
 B Lucas Feijo
-B Dayvid Arduino
