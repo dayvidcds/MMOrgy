@@ -16,7 +16,7 @@ int main (int argc, char **argv){
 	int n_pessoas = 0, quantidade_cadastros = 0;
 	
     FILE *newsfeed = NULL;
-    newsfeed = fopen("News Feed.txt", "w+");
+    newsfeed = fopen("data.out", "w+");
     
 	FILE *entrada = NULL;
     
