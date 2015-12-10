@@ -22,6 +22,11 @@ struct lista_perfisInteresses {
     struct lista_perfisInteresses *proxi;
 };
 
+struct NoListaInteresses {
+	struct Cluster_interesses *lista;
+	struct NoListaInteresses *prox;
+};
+
 void encadeia_cidades (struct Cidade **cidade_fim, struct Cidade *cidade_novo);
 struct Cidade *mapear_grafo (struct No *grafo, int index_Inicio);
 void insere_pessoasCidade(struct No **head_perfis, struct Cidade **head_cidades, int *quantidade_perfis);
@@ -30,5 +35,8 @@ struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inic
 void insere_pessoasInteresses(struct No **head_perfis, struct Cluster_interesses **head_interesses);
 void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses **head_interesses);
 void porcentagem_interesses (struct Cluster_interesses **head_interesses, int quant_perfis);
+void inserirFilaDeInteresses(struct NoListaInteresses **ultimo, struct NoListaInteresses **inicio, struct NoListaInteresses *novo);
+void removerDaFilaDeInteresses(struct NoListaInteresses **inicio);
+void imprimir(struct NoListaInteresses *lista);
 
 #endif
