@@ -263,12 +263,16 @@ struct Cluster_interesses * mapear_interesses (struct No * grafo, int index_inic
 	return head_interesses;
 }
 
-//Aqui é mostrado em % a quantidade de pessoas de cada cluster de interesses para cada cidade
+/*Aqui é mostrado em % a quantidade de pessoas de cada cluster de interesses para cada cidade e ao mesmo tempo
+separado os grupos com mais pessoas para cada cidade e depois notificando as pessoas da cidade que não fazem parte
+do grupo*/
 void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses **head_interesses){
-	struct lista_perfisInteresses *perfis_interesses = (struct lista_perfisInteresses*) malloc(sizeof(struct lista_perfisInteresses));
-	struct Cluster_interesses *temp_interesses = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
-	struct Cidade *temp_cidade = (struct Cidade*) malloc(sizeof (struct Cidade));
+	struct lista_perfisInteresses *perfis_interesses = NULL;
+	struct Cluster_interesses *temp_interesses = NULL;
+	struct Cidade *temp_cidade = NULL;
     struct Cidade *head_cidade_temp = *head_cidades;
+    struct Cluster_interesses *GMOVI_TEMP = NULL;
+    struct NoListaInteresses *GMOVI = (struct NoListaInteresses*) malloc(sizeof(struct NoListaInteresses)); //GMOVI = GRUPO MOVIMENTADO
     
     while(head_cidade_temp){
     	
@@ -278,11 +282,14 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
 	}
 	
 	head_cidade_temp = *head_cidades;
+	
 	//aqui ele verifica cidade por cidade
 	while(head_cidade_temp){
-
+		struct NoListaInteresses *inicio = NULL;
+    	struct NoListaInteresses *ultimo = NULL;
 		int quant_perfis = head_cidade_temp->contador;
 		float porcentagem = 0.0f;
+		GMOVI->lista = *head_interesses;
 		
 		printf("\n\nDados referentes a cidade de %s:\n\n", head_cidade_temp->nome);
 		//aqui contamos quantas pessoas curtem certa coisa de uma certa cidade
@@ -296,32 +303,56 @@ void porcentagem_cidade (struct Cidade **head_cidades, struct Cluster_interesses
 				if(strcmp(perfis_interesses->perfil->cidade, head_cidade_temp->nome) == 0) perfis+=1;
 				
 			}
-			//imprimindo e verificando qual grupo(cluster) que possui mais membros
+			
+			//convertendo quantidade de pessoas da cidade por quantidade de pessoas do grupo na cidade para %
 			porcentagem = ((float)perfis/quant_perfis)*100.0;
+			
+			//imprimindo e verificando qual grupo(cluster) que possui mais membros
 			if(porcentagem > 0){
 					
             	temp_interesses->percent = porcentagem;
 				printf("De todas as pessoas dessa cidade %.2f%% curtem %s\n", temp_interesses->percent, temp_interesses->interesse);
-	
+				
+				if(temp_interesses->percent >= GMOVI->lista->percent){
+					//GMOVI_TEMP = temp_interesses;
+					GMOVI = (struct NoListaInteresses *) malloc(sizeof(struct NoListaInteresses));
+					GMOVI->lista = temp_interesses;
+					inserirFilaDeInteresses(&ultimo, &inicio, GMOVI);
+					//printf("\n\nGrupo(s) mais movimentado(s) -> %s\n\n", inicio->lista->interesse);
+				}
+				
 	   		}
+	   	
         }
-        
+        //printf("\n\nGrupo(s) mais movimentado(s) -> %s\n\n", inicio->lista->interesse);
+		imprimir(inicio);
 		head_cidade_temp = head_cidade_temp->prox;
 	}
-    
 }
 
-//interesses em % geral
-/*void porcentagem_interesses (struct Cluster_interesses **head_interesses, int quant_perfis){
-    
-    struct Cluster_interesses *temp_interesses = (struct Cluster_interesses*)malloc(sizeof(struct Cluster_interesses));
-    
-        for (temp_interesses = (*head_interesses); temp_interesses != NULL; temp_interesses = temp_interesses->prox){
-            
-            int perfis = temp_interesses->counter;
-            int quant = quant_perfis;
-            float porcentagem = ((float)perfis/quant)*100.0;
-            temp_interesses->percent = porcentagem;  
-			printf("\n %s tem %f%%\n", temp_interesses->interesse, temp_interesses->percent); 
-        }
-}*/
+void inserirFilaDeInteresses(struct NoListaInteresses **ultimo, struct NoListaInteresses **inicio, struct NoListaInteresses *novo){
+	if((*ultimo) != NULL){
+		novo->prox = (*ultimo)->prox;
+		(*ultimo)->prox = novo;
+		(*ultimo) = novo;
+		return;
+	}
+	novo->prox = NULL;
+	(*ultimo) = novo;
+	(*inicio) = novo;
+}
+
+void removerDaFilaDeInteresses(struct NoListaInteresses **inicio){
+	(*inicio) = (*inicio)->prox;
+}
+
+void imprimir(struct NoListaInteresses *Lista){
+	
+	while(Lista != NULL){
+		
+		printf("\nGrupo(s) mais movimentado(s) -> %s", Lista->lista->interesse);
+		Lista = Lista->prox;
+		
+	}
+	printf("\n\n");
+}
